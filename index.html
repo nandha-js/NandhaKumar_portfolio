@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nandha Kumar Portfolio</title>
+
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+  <!-- Devicons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="dark">
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <h1 class="logo">Nandha's Portfolio</h1>
+      <button class="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav class="nav-menu">
+        <a href="#hero">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+        <button class="theme-toggle" aria-label="Toggle color mode">
+          <i class="fas fa-sun"></i>
+        </button>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section" data-aos="fade-in">
+      <div class="hero-content">
+        <h2>Hi, I'm <span class="highlight">Nandha Kumar</span></h2>
+        <h3>Full Stack Developer</h3>
+        <p>Building digital experiences that matter with clean, efficient code and modern technologies.</p>
+        <div class="hero-buttons">
+          <a href="#projects" class="btn-primary">View My Work</a>
+          <a href="#contact" class="btn-secondary">Contact Me</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img style="border-radius:20rem;" src= "Screenshot 2025-06-06 162909.png" alt="Developer illustration">
+      </div>
+    </section>
+
+    <!-- About Me -->
+    <section id="about" class="content" data-aos="fade-up">
+      <div class="tag-box">
+        <h2 class="tag">About Me</h2>
+        <p>I am <strong>Nandha Kumar</strong>, a passionate Full Stack Developer with expertise in modern web technologies.</p>
+        <p>With a strong foundation in Computer Science and hands-on experience, I build seamless digital experiences from concept to deployment.</p>
+        <p>When I'm not coding, I explore new technologies and share knowledge with the developer community.</p>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="content" data-aos="fade-up">
+      <div class="tag-box">
+        <h2 class="tag">Skills</h2>
+        <div class="skills-grid">
+          <div class="skill-item"><i class="devicon-html5-plain colored"></i><span>HTML5</span></div>
+          <div class="skill-item"><i class="devicon-css3-plain colored"></i><span>CSS3</span></div>
+          <div class="skill-item"><i class="devicon-javascript-plain colored"></i><span>JavaScript</span></div>
+          <div class="skill-item"><i class="devicon-react-original colored"></i><span>React.js</span></div>
+          <div class="skill-item"><i class="devicon-nodejs-plain colored"></i><span>Node.js</span></div>
+          <div class="skill-item"><i class="devicon-express-original colored"></i><span>Express.js</span></div>
+          <div class="skill-item"><i class="devicon-mongodb-plain colored"></i><span>MongoDB</span></div>
+          <div class="skill-item"><i class="devicon-git-plain colored"></i><span>Git</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="content" data-aos="fade-up">
+      <div class="tag-box">
+        <h2 class="tag">Projects</h2>
+        <div class="projects-container">
+          <!-- Repeat for each project -->
+          <div class="project">
+            <h3>🎬 Movie Search App</h3>
+            <a href="https://github.com/nandha-js/movie-search-app.git" target="_blank" class="project-link">GitHub Repo</a>
+            <ul>
+              <li>Built with React and OMDB API</li>
+              <li>Pagination and filtering features</li>
+              <li>Responsive design with Tailwind CSS</li>
+            </ul>
+          </div>
+          <div class="project">
+            <h3>🛒 E-commerce System</h3>
+            <a href="https://github.com/nandha-js/Fake-api.git" target="_blank" class="project-link">GitHub Repo</a>
+            <ul>
+              <li>Database design with SQL</li>
+              <li>Order and product management</li>
+              <li>Efficient query optimization</li>
+            </ul>
+          </div>
+          <div class="project">
+            <h3>🛍️ Fake Store React App</h3>
+            <a href="https://github.com/nandha-js/Fake-api.git" target="_blank" class="project-link">GitHub Repo</a>
+            <ul>
+              <li>Integrated Fake Store API</li>
+              <li>Cart page with quantity management</li>
+              <li>Dynamic price calculation and discounts</li>
+            </ul>
+          </div>
+          <div class="project">
+            <h3>💰 Income Expense Tracker</h3>
+            <a href="https://github.com/nandha-js/Income-Expense-Calculator-Task.git" target="_blank" class="project-link">GitHub Repo</a>
+            <ul>
+              <li>CRUD app using HTML, CSS, JS</li>
+              <li>Balance calculation with filters</li>
+              <li>Local storage to persist data</li>
+            </ul>
+          </div>
+          <div class="project">
+            <h3>🗄️ Zen Class MongoDB Project</h3>
+            <a href="https://github.com/nandha-js/MongoDB-Task.git" target="_blank" class="project-link">GitHub Repo</a>
+            <ul>
+              <li>MongoDB collections design</li>
+              <li>Complex queries for tasks & attendance</li>
+              <li>REST API integration</li>
+            </ul>
+          </div>
+          <div class="project">
+            <h3>🎟️ Movie Ticket Booking System</h3>
+            <a href="https://github.com/nandha-js/movie-search-app.git" target="_blank" class="project-link">GitHub Repo</a>
+            <ul>
+              <li>Full stack web app with seat booking</li>
+              <li>Payment gateway integration</li>
+              <li>User authentication & real-time updates</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="content" data-aos="fade-up">
+      <div class="tag-box">
+        <h2 class="tag">Education</h2>
+        <ul class="education-list">
+          <li><strong>BSc in Computer Science</strong> — Sankara College, Kanchipuram (2021-2024)</li>
+          <li><strong>Full Stack Development Course</strong> — Guvi (2024-2025)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="content" data-aos="fade-up">
+      <div class="tag-box">
+        <h2 class="tag">Get In Touch</h2>
+        <form class="contact-form">
+          <div class="form-group"><input type="text" placeholder="Your Name" required></div>
+          <div class="form-group"><input type="email" placeholder="Your Email" required></div>
+          <div class="form-group"><textarea placeholder="Your Message" rows="5" required></textarea></div>
+          <button type="submit" class="btn-primary">Send Message</button>
+        </form>
+        <div class="social-links">
+          <a href="https://github.com/nandha-js" target="_blank"><i class="fab fa-github"></i></a>
+          <a href="https://linkedin.com/in/nandhakumar" target="_blank"><i class="fab fa-linkedin"></i></a>
+          
+          <a href="mailto:nandhatpk@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2023 Nandha Kumar. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+  <!-- JavaScript -->
+  <script>
+    AOS.init({ duration: 1000, once: true });
+
+    const menuToggle = document.querySelector('.mobile-menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    const themeToggle = document.querySelector('.theme-toggle');
+    const body = document.body;
+
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+      menuToggle.innerHTML = navMenu.classList.contains('active')
+        ? '<i class="fas fa-times"></i>'
+        : '<i class="fas fa-bars"></i>';
+    });
+
+    themeToggle.addEventListener('click', () => {
+      const newTheme = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      body.setAttribute('data-theme', newTheme);
+      themeToggle.innerHTML = newTheme === 'light'
+        ? '<i class="fas fa-moon"></i>'
+        : '<i class="fas fa-sun"></i>';
+    });
+
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+      });
+    });
+
+    document.querySelector('.contact-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Thank you for your message! I will get back to you soon.');
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>
