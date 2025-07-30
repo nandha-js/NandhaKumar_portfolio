@@ -3,224 +3,390 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nandha Kumar Portfolio</title>
+  <meta name="description" content="Nandha Kumar - Advanced Portfolio" />
+  <title>Nandha Kumar | Full Stack Developer</title>
 
-  <!-- AOS CSS -->
+  <!-- Tailwind CSS CDN -->
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+ 
+  <!-- AOS Animate on Scroll -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-
-  <!-- Devicons -->
+  <!-- Font Awesome & Devicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- External CSS -->
-  <link rel="stylesheet" href="style.css">
+  <!-- Google Fonts: Poppins & Space Grotesk -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Poppins', 'Space Grotesk', sans-serif; }
+    .nav-link::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg,#0ea5e9,#8b5cf6);
+      transition: width .3s;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+    }
+    .nav-link:hover::after { width: 100%; }
+    .nav-link { position: relative; padding-bottom: 2px; }
+    .glass-bg {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 1.25rem;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.20);
+      backdrop-filter: blur(16px) saturate(150%);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+    .animategradient {
+      background: linear-gradient(-45deg, #4f46e5, #06b6d4, #8b5cf6, #f43f5e); 
+      background-size: 400% 400%;
+      animation: gradientBG 12s ease infinite;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    @keyframes gradientBG {
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
+    }
+    .floating { animation: floatingY 3s ease-in-out infinite alternate; }
+    @keyframes floatingY {
+      0% {transform: translateY(0px);}
+      100% {transform: translateY(-16px);}
+    }
+    .card-3d {
+      perspective: 1200px;
+      transition: transform 0.3s;
+    }
+    .card-3d:hover {
+      transform: rotateY(4deg) scale(1.048);
+      box-shadow: 0 12px 60px 0 rgba(74,63,190,0.06), 0 1.5px 12px 1px #a5b4fc;
+    }
+  </style>
 </head>
-<body data-theme="dark">
-  <div class="container">
-    <!-- Header -->
-    <header>
-      <h1 class="logo">Portfolio</h1>
-      <button class="mobile-menu-toggle">
-        <i class="fas fa-bars"></i>
-      </button>
-      <nav class="nav-menu">
-        <a href="#hero">Home</a>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#education">Education</a>
-        <a href="#contact">Contact</a>
-        <button class="theme-toggle" aria-label="Toggle color mode">
-          <i class="fas fa-sun"></i>
-        </button>
+<body class="bg-gradient-to-br from-indigo-50 via-blue-50 to-fuchsia-100 min-h-screen text-gray-900 selection:bg-indigo-300 selection:text-indigo-900 relative">
+  <!-- SVG 3D Background Blob -->
+  <svg class="absolute top-[-120px] left-1/2 -translate-x-1/2 pointer-events-none z-0" style="opacity:0.08" width="1100" height="310" fill="none">
+    <defs>
+      <linearGradient id="paint" x1="0" y1="0" x2="1" y2="1">
+        <stop stop-color="#6366f1" />
+        <stop offset="1" stop-color="#9c3aed" />
+      </linearGradient>
+    </defs>
+    <path d="M0 220C160 290 390 160 600 60C810 -40 1092 130 1100 150V0H0V220Z" fill="url(#paint)"/>
+  </svg>
+
+  <!-- Glassy Header -->
+  <header class="fixed w-full top-0 left-0 z-50 glass-bg px-0 transition-all duration-400 backdrop-blur-md">
+    <div class="max-w-5xl mx-auto flex items-center justify-between py-4 px-4">
+      <a href="#" class="text-3xl font-extrabold animategradient tracking-tight">Nandha<span class="text-violet-800">Kumar</span></a>
+      <nav class="hidden md:flex items-center space-x-10 font-medium text-gray-700">
+        <a href="#hero" class="nav-link">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#education" class="nav-link">Education</a>
+        <a href="#contact" class="nav-link">Contact</a>
       </nav>
-    </header>
+      <button class="block md:hidden text-2xl text-indigo-600" id="menuBtn"><i class="fas fa-bars"></i></button>
+    </div>
+    <!-- Mobile nav -->
+    <nav class="flex-col gap-2 glass-bg px-5 py-2 rounded-lg mt-2 md:hidden hidden" id="navMenuMobile">
+      <a href="#hero" class="block py-2 px-3 rounded hover:bg-indigo-100 text-indigo-600">Home</a>
+      <a href="#about" class="block py-2 px-3 rounded hover:bg-indigo-100 text-indigo-600">About</a>
+      <a href="#skills" class="block py-2 px-3 rounded hover:bg-indigo-100 text-indigo-600">Skills</a>
+      <a href="#projects" class="block py-2 px-3 rounded hover:bg-indigo-100 text-indigo-600">Projects</a>
+      <a href="#education" class="block py-2 px-3 rounded hover:bg-indigo-100 text-indigo-600">Education</a>
+      <a href="#contact" class="block py-2 px-3 rounded hover:bg-indigo-100 text-indigo-600">Contact</a>
+    </nav>
+  </header>
 
-    <!-- Hero Section -->
-    <section id="hero" class="hero-section" data-aos="fade-in">
-      <div class="hero-content">
-        <h2>Hi, I'm <span class="highlight">Nandha Kumar</span></h2>
-        <h3>Full Stack Developer</h3>
-        <p>Building digital experiences that matter with clean, efficient code and modern technologies.</p>
-        <div class="hero-buttons">
-          <a href="#projects" class="btn-primary">View My Work</a>
-          <a href="#contact" class="btn-secondary">Contact Me</a>
+  <main class="max-w-5xl mx-auto pt-28 relative z-10">
+    <!-- Hero Section with 3D Card & animated text -->
+    <section id="hero" class="flex flex-col md:flex-row items-center justify-between my-12 gap-12" data-aos="fade-down">
+      <div class="flex-1 md:pr-12">
+        <h2 class="text-5xl sm:text-5xl font-extrabold animategradient mb-3 leading-snug floating">
+          Hi, I’m <span class="highlight">NandhaKumar</span>
+        </h2>
+        <h3 class="text-2xl font-semibold text-indigo-800 mb-2">Full Stack Developer</h3>
+        <p class="text-gray-700 mb-7 text-lg">Crafting next-gen web experiences with clean code and creativity.</p>
+        <div class="flex gap-5 mb-7">
+          <a href="#projects" class="btn-primary bg-gradient-to-r from-indigo-600 to-fuchsia-600 text-white font-semibold px-7 py-2.5 rounded-md shadow-lg hover:scale-105 transition">View My Work</a>
+          <a href="#contact" class="btn bg-white/70 border border-indigo-400 text-indigo-700 px-7 py-2.5 rounded-md font-semibold shadow-md hover:scale-105 transition">Contact Me</a>
+        </div>
+        <div class="flex space-x-5">
+          <a href="https://github.com/nandha-js" target="_blank" class="social-icon text-2xl text-gray-700 hover:text-indigo-700 hover:scale-125 transition"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/nandhakumar-p-2441b2329/" target="_blank" class="social-icon text-2xl text-blue-700 hover:text-indigo-700 hover:scale-125 transition"><i class="fab fa-linkedin-in"></i></a>
+          <a href="mailto:nandhatpk@gmail.com" class="social-icon text-2xl text-rose-600 hover:text-indigo-700 hover:scale-125 transition"><i class="fas fa-envelope"></i></a>
         </div>
       </div>
-      <div class="hero-image">
-        <img style="border-radius:20rem;" src= "Screenshot 2025-06-06 162909.png" alt="Developer illustration">
-      </div>
-    </section>
-
-    <!-- About Me -->
-    <section id="about" class="content" data-aos="fade-up">
-      <div class="tag-box">
-        <h2 class="tag">About Me</h2>
-        <p>I am <strong>Nandha Kumar</strong>, a passionate Full Stack Developer with expertise in modern web technologies.</p>
-        <p>With a strong foundation in Computer Science and hands-on experience, I build seamless digital experiences from concept to deployment.</p>
-        <p>When I'm not coding, I explore new technologies and share knowledge with the developer community.</p>
-      </div>
-    </section>
-
-    <!-- Skills -->
-    <section id="skills" class="content" data-aos="fade-up">
-      <div class="tag-box">
-        <h2 class="tag">Skills</h2>
-        <div class="skills-grid">
-          <div class="skill-item"><i class="devicon-html5-plain colored"></i><span>HTML5</span></div>
-          <div class="skill-item"><i class="devicon-css3-plain colored"></i><span>CSS3</span></div>
-          <div class="skill-item"><i class="devicon-javascript-plain colored"></i><span>JavaScript</span></div>
-          <div class="skill-item"><i class="devicon-react-original colored"></i><span>React.js</span></div>
-          <div class="skill-item"><i class="devicon-nodejs-plain colored"></i><span>Node.js</span></div>
-          <div class="skill-item"><i class="devicon-express-original colored"></i><span>Express.js</span></div>
-          <div class="skill-item"><i class="devicon-mongodb-plain colored"></i><span>MongoDB</span></div>
-          <div class="skill-item"><i class="devicon-git-plain colored"></i><span>Git</span></div>
+      <div class="flex-1 flex justify-center">
+        <div class="relative card-3d shadow-2xl rounded-[3rem] overflow-hidden">
+          <img src="" alt="Nandha Kumar" class="h-56 w-56 md:h-72 md:w-72 object-cover" />
+          <!-- Animated glow blob -->
+          <div class="absolute -bottom-6 -right-8 w-32 h-32 bg-gradient-to-tr from-cyan-400 to-fuchsia-400 rounded-full blur-3xl opacity-75 -z-10"></div>
         </div>
       </div>
     </section>
 
-    <!-- Projects -->
-    <section id="projects" class="content" data-aos="fade-up">
-      <div class="tag-box">
-        <h2 class="tag">Projects</h2>
-        <div class="projects-container">
-          <!-- Repeat for each project -->
-          <div class="project">
-            <h3>🎬 Movie Search App</h3>
-            <a href="https://github.com/nandha-js/movie-search-app.git" target="_blank" class="project-link">GitHub Repo</a>
-            <ul>
-              <li>Built with React and OMDB API</li>
-              <li>Pagination and filtering features</li>
-              <li>Responsive design with Tailwind CSS</li>
-            </ul>
+    <!-- About with Glass & Subtle Bouncing Icon -->
+    <section id="about" class="my-16" data-aos="fade-up">
+      <div class="glass-bg px-8 py-7 rounded-2xl shadow-xl border border-white/60">
+        <h2 class="text-2xl font-bold mb-3 animategradient">About Me</h2>
+        <p class="mb-2 text-gray-700">I am <span class="font-semibold">NandhaKumar</span>, a passionate Full Stack Developer specializing in modern JavaScript frameworks and backend technologies.</p>
+        <p class="mb-2 text-gray-700">Solid Computer Science background, and an eagerness to architect seamless, performant digital products from concept to launch.</p>
+        <p class="text-gray-700">I love exploring new technologies and sharing insights with the developer community.</p>
+      </div>
+    </section>
+
+    <!-- Skills with modern radial progress, gradient, and devicons -->
+    <section id="skills" class="my-16" data-aos="fade-up">
+      <div class="glass-bg px-8 py-8 rounded-2xl shadow-xl border border-white/60">
+        <h2 class="text-2xl font-bold mb-7 animategradient">Skills</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          <div>
+            <!-- Example Skill Radial -->
+            <div class="mb-6 flex items-center gap-4">
+              <span class="block"><i class="devicon-html5-plain colored text-4xl"></i></span>
+              <span class="flex-grow">
+                <span class="flex justify-between font-medium"><span>HTML5</span><span class="text-xs">Advanced</span></span>
+                <div class="relative w-full h-3 bg-gray-200 mt-1 rounded">
+                  <div class="absolute left-0 top-0 h-3 bg-gradient-to-r from-orange-400 to-pink-500 rounded transition-all" style="width:97%"></div>
+                </div>
+              </span>
+            </div>
+            <div class="mb-6 flex items-center gap-4">
+              <i class="devicon-css3-plain colored text-4xl"></i>
+              <span class="flex-grow">
+                <span class="flex justify-between font-medium"><span>CSS3</span><span class="text-xs">Advanced</span></span>
+                <div class="relative w-full h-3 bg-gray-200 mt-1 rounded">
+                  <div class="absolute left-0 top-0 h-3 bg-gradient-to-r from-blue-500 to-indigo-500 rounded" style="width:95%"></div>
+                </div>
+              </span>
+            </div>
+            <div class="mb-6 flex items-center gap-4">
+              <i class="devicon-javascript-plain colored text-4xl"></i>
+              <span class="flex-grow">
+                <span class="flex justify-between font-medium"><span>JavaScript</span><span class="text-xs">Advanced</span></span>
+                <div class="relative w-full h-3 bg-gray-200 mt-1 rounded">
+                  <div class="absolute left-0 top-0 h-3 bg-gradient-to-r from-yellow-400 via-orange-400 to-pink-400 rounded" style="width:93%"></div>
+                </div>
+              </span>
+            </div>
+            <div class="mb-6 flex items-center gap-4">
+              <i class="devicon-git-plain colored text-4xl"></i>
+              <span class="flex-grow">
+                <span class="flex justify-between font-medium"><span>Git</span><span class="text-xs">Intermediate</span></span>
+                <div class="relative w-full h-3 bg-gray-200 mt-1 rounded">
+                  <div class="absolute left-0 top-0 h-3 bg-gradient-to-r from-gray-700 to-orange-500 rounded" style="width:80%"></div>
+                </div>
+              </span>
+            </div>
           </div>
-          <div class="project">
-            <h3>🛒 E-commerce System</h3>
-            <a href="https://github.com/nandha-js/Fake-api.git" target="_blank" class="project-link">GitHub Repo</a>
-            <ul>
-              <li>Database design with SQL</li>
-              <li>Order and product management</li>
-              <li>Efficient query optimization</li>
-            </ul>
-          </div>
-          <div class="project">
-            <h3>🛍️ Fake Store React App</h3>
-            <a href="https://github.com/nandha-js/Fake-api.git" target="_blank" class="project-link">GitHub Repo</a>
-            <ul>
-              <li>Integrated Fake Store API</li>
-              <li>Cart page with quantity management</li>
-              <li>Dynamic price calculation and discounts</li>
-            </ul>
-          </div>
-          <div class="project">
-            <h3>💰 Income Expense Tracker</h3>
-            <a href="https://github.com/nandha-js/Income-Expense-Calculator-Task.git" target="_blank" class="project-link">GitHub Repo</a>
-            <ul>
-              <li>CRUD app using HTML, CSS, JS</li>
-              <li>Balance calculation with filters</li>
-              <li>Local storage to persist data</li>
-            </ul>
-          </div>
-          <div class="project">
-            <h3>🗄️ Zen Class MongoDB Project</h3>
-            <a href="https://github.com/nandha-js/MongoDB-Task.git" target="_blank" class="project-link">GitHub Repo</a>
-            <ul>
-              <li>MongoDB collections design</li>
-              <li>Complex queries for tasks & attendance</li>
-              <li>REST API integration</li>
-            </ul>
-          </div>
-          <div class="project">
-            <h3>🎟️ Movie Ticket Booking System</h3>
-            <a href="https://github.com/nandha-js/movie-search-app.git" target="_blank" class="project-link">GitHub Repo</a>
-            <ul>
-              <li>Full stack web app with seat booking</li>
-              <li>Payment gateway integration</li>
-              <li>User authentication & real-time updates</li>
-            </ul>
+          <div>
+            <div class="mb-6 flex items-center gap-4">
+              <i class="devicon-react-original colored text-4xl"></i>
+              <span class="flex-grow">
+                <span class="flex justify-between font-medium"><span>React.js</span><span class="text-xs">Advanced</span></span>
+                <div class="relative w-full h-3 bg-gray-200 mt-1 rounded">
+                  <div class="absolute left-0 top-0 h-3 bg-gradient-to-r from-cyan-400 to-blue-800 rounded" style="width:92%"></div>
+                </div>
+              </span>
+            </div>
+            <div class="mb-6 flex items-center gap-4">
+              <i class="devicon-nodejs-plain colored text-4xl"></i>
+              <span class="flex-grow">
+                <span class="flex justify-between font-medium"><span>Node.js</span><span class="text-xs">Intermediate</span></span>
+                <div class="relative w-full h-3 bg-gray-200 mt-1 rounded">
+                  <div class="absolute left-0 top-0 h-3 bg-gradient-to-r from-green-500 to-lime-500 rounded" style="width:85%"></div>
+                </div>
+              </span>
+            </div>
+            <div class="mb-6 flex items-center gap-4">
+              <i class="devicon-express-original colored text-4xl"></i>
+              <span class="flex-grow">
+                <span class="flex justify-between font-medium"><span>Express.js</span><span class="text-xs">Intermediate</span></span>
+                <div class="relative w-full h-3 bg-gray-200 mt-1 rounded">
+                  <div class="absolute left-0 top-0 h-3 bg-gradient-to-r from-slate-700 to-gray-400 rounded" style="width:83%"></div>
+                </div>
+              </span>
+            </div>
+            <div class="mb-6 flex items-center gap-4">
+              <i class="devicon-mongodb-plain colored text-4xl"></i>
+              <span class="flex-grow">
+                <span class="flex justify-between font-medium"><span>MongoDB</span><span class="text-xs">Intermediate</span></span>
+                <div class="relative w-full h-3 bg-gray-200 mt-1 rounded">
+                  <div class="absolute left-0 top-0 h-3 bg-gradient-to-r from-green-400 to-gray-200 rounded" style="width:72%"></div>
+                </div>
+              </span>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Education -->
-    <section id="education" class="content" data-aos="fade-up">
-      <div class="tag-box">
-        <h2 class="tag">Education</h2>
-        <ul class="education-list">
-          <li><strong>BSc in Computer Science</strong> — Sankara College, Kanchipuram (2021-2024)</li>
-          <li><strong>Full Stack Development Course</strong> — Guvi (2024-2025)</li>
+    <!-- Projects Modern Cards Grid -->
+<section id="projects" class="my-16" data-aos="fade-up">
+  <div class="glass-bg px-8 py-8 rounded-2xl shadow-xl border border-white/70">
+    <h2 class="text-2xl font-bold mb-6 animategradient">Projects</h2>
+    <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-7">
+
+      <!-- 🎬 Movie Search App -->
+      <div class="card-3d glass-bg px-6 py-5 rounded-2xl shadow-xl transition duration-300 hover:scale-105 border-2 border-indigo-100 relative group">
+        <h3 class="font-bold text-lg mb-2 bg-gradient-to-r from-indigo-700 to-cyan-500 bg-clip-text text-transparent">🎬 Movie Search App</h3>
+        <p class="mb-1 text-gray-700">React + OMDB API + modern UI</p>
+        <ul class="list-disc list-inside text-gray-600 text-sm mb-2">
+          <li>Built with React & OMDB API</li>
+          <li>Pagination and filtering features</li>
+          <li>Responsive Tailwind CSS design</li>
+        </ul>
+        <a href="https://github.com/nandha-js/movie-search-app.git" target="_blank" class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition">
+          <i class="fas fa-arrow-up-right-from-square text-xl text-indigo-700 bg-white rounded-full p-2 shadow hover:bg-indigo-600 hover:text-white"></i>
+        </a>
+      </div>
+
+      <!-- 🏡 Real Estate Website -->
+      <div class="card-3d glass-bg px-6 py-5 rounded-2xl shadow-xl transition duration-300 hover:scale-105 border-2 border-green-100 relative group">
+        <h3 class="font-bold text-lg mb-2 bg-gradient-to-r from-green-600 to-teal-400 bg-clip-text text-transparent">🏡 Real Estate Website</h3>
+        <p class="mb-1 text-gray-700">MERN Stack + TailwindCSS</p>
+        <ul class="list-disc list-inside text-gray-600 text-sm mb-2">
+          <li>Property listing & filtering</li>
+          <li>Agent profiles & dashboards</li>
+          <li>Map integration & role-based auth</li>
+        </ul>
+        <a href="https://github.com/nandha-js/real-estate-frontend-.git" target="_blank" class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition">
+          <i class="fas fa-arrow-up-right-from-square text-xl text-green-700 bg-white rounded-full p-2 shadow hover:bg-green-600 hover:text-white"></i>
+        </a>
+      </div>
+
+      <!-- 📝 Notes App -->
+      <div class="card-3d glass-bg px-6 py-5 rounded-2xl shadow-xl transition duration-300 hover:scale-105 border-2 border-yellow-100 relative group">
+        <h3 class="font-bold text-lg mb-2 bg-gradient-to-r from-yellow-600 to-orange-400 bg-clip-text text-transparent">📝 Notes App</h3>
+        <p class="mb-1 text-gray-700">React + Tailwind + localStorage</p>
+        <ul class="list-disc list-inside text-gray-600 text-sm mb-2">
+          <li>Create, pin, archive, trash notes</li>
+          <li>Search, filter, and tag support</li>
+          <li>Data persistence via localStorage</li>
+        </ul>
+        <a href="https://github.com/nandha-js/notes-guvi.git" target="_blank" class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition">
+          <i class="fas fa-arrow-up-right-from-square text-xl text-yellow-600 bg-white rounded-full p-2 shadow hover:bg-yellow-500 hover:text-white"></i>
+        </a>
+      </div>
+
+      <!-- 💰 Smart Expense Tracker -->
+      <div class="card-3d glass-bg px-6 py-5 rounded-2xl shadow-xl transition duration-300 hover:scale-105 border-2 border-rose-100 relative group">
+        <h3 class="font-bold text-lg mb-2 bg-gradient-to-r from-pink-600 to-rose-400 bg-clip-text text-transparent">💰 Smart Expense Tracker</h3>
+        <p class="mb-1 text-gray-700">React + Chart.js + localStorage</p>
+        <ul class="list-disc list-inside text-gray-600 text-sm mb-2">
+          <li>Track expenses by category</li>
+          <li>Filter by date, amount, or category</li>
+          <li>Pie/Bar chart visualizations</li>
+        </ul>
+        <a href="https://github.com/nandha-js/smart-expense-tracker.git" target="_blank" class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition">
+          <i class="fas fa-arrow-up-right-from-square text-xl text-rose-700 bg-white rounded-full p-2 shadow hover:bg-rose-600 hover:text-white"></i>
+        </a>
+      </div>
+
+      <!-- 🔐 Password Reset Flow -->
+      <div class="card-3d glass-bg px-6 py-5 rounded-2xl shadow-xl transition duration-300 hover:scale-105 border-2 border-purple-100 relative group">
+        <h3 class="font-bold text-lg mb-2 bg-gradient-to-r from-purple-700 to-fuchsia-500 bg-clip-text text-transparent">🔐 Password Reset Flow</h3>
+        <p class="mb-1 text-gray-700">React + Node.js + Email + Bootstrap</p>
+        <ul class="list-disc list-inside text-gray-600 text-sm mb-2">
+          <li>Forget password via secure token email</li>
+          <li>Token expiry and reset password page</li>
+          <li>Responsive design using Bootstrap</li>
+        </ul>
+        <a href="https://github.com/nandha-js/project-root-frontend.git" target="_blank" class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition">
+          <i class="fas fa-arrow-up-right-from-square text-xl text-purple-700 bg-white rounded-full p-2 shadow hover:bg-purple-600 hover:text-white"></i>
+        </a>
+      </div>
+
+      <!-- 🛡️ JWT Authentication API -->
+      <div class="card-3d glass-bg px-6 py-5 rounded-2xl shadow-xl transition duration-300 hover:scale-105 border-2 border-sky-100 relative group">
+        <h3 class="font-bold text-lg mb-2 bg-gradient-to-r from-sky-700 to-blue-400 bg-clip-text text-transparent">🛡️ JWT Authentication API</h3>
+        <p class="mb-1 text-gray-700">Node.js + Express + JWT + MongoDB</p>
+        <ul class="list-disc list-inside text-gray-600 text-sm mb-2">
+          <li>Bearer token auth with middleware</li>
+          <li>Secure login, signup, token verify</li>
+          <li>MVC pattern + Postman API docs</li>
+        </ul>
+        <a href="https://github.com/nandha-js/JWT-Authentication-API.git" target="_blank" class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition">
+          <i class="fas fa-arrow-up-right-from-square text-xl text-sky-700 bg-white rounded-full p-2 shadow hover:bg-sky-600 hover:text-white"></i>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+    <!-- Education Section -->
+    <section id="education" class="my-16" data-aos="fade-up">
+      <div class="glass-bg px-8 py-7 rounded-2xl shadow-lg border border-white/60">
+        <h2 class="text-2xl font-bold mb-4 animategradient">Education</h2>
+        <ul class="education-list text-gray-700 list-disc pl-6 space-y-2 text-lg">
+          <li><span class="font-semibold">BSc in Computer Science</span> — Sankara College, Kanchipuram (2021-2024)</li>
+          <li><span class="font-semibold">Full Stack Development Course</span> — Guvi (2024-2025)</li>
         </ul>
       </div>
     </section>
 
-    <!-- Contact -->
-    <section id="contact" class="content" data-aos="fade-up">
-      <div class="tag-box">
-        <h2 class="tag">Get In Touch</h2>
-        <form class="contact-form">
-          <div class="form-group"><input type="text" placeholder="Your Name" required></div>
-          <div class="form-group"><input type="email" placeholder="Your Email" required></div>
-          <div class="form-group"><textarea placeholder="Your Message" rows="5" required></textarea></div>
-          <button type="submit" class="btn-primary">Send Message</button>
-        </form>
-        <div class="social-links">
-          <a href="https://github.com/nandha-js" target="_blank"><i class="fab fa-github"></i></a>
-          <a href="https://linkedin.com/in/nandhakumar" target="_blank"><i class="fab fa-linkedin"></i></a>
-          
-          <a href="mailto:nandhatpk@gmail.com"><i class="fas fa-envelope"></i></a>
-        </div>
+    <!-- Contact Section -->
+<section id="contact" class="my-16" data-aos="fade-up">
+  <div class="glass-bg px-8 py-8 rounded-2xl shadow-lg border border-white/60">
+    <h2 class="text-2xl font-bold mb-5 animategradient">Get In Touch</h2>
+    <form class="max-w-lg mx-auto space-y-6" id="contactForm">
+      <div class="flex flex-col">
+        <label for="name" class="mb-1">Your Name</label>
+        <input type="text" id="name" name="name" required class="px-4 py-2.5 border-2 border-indigo-200 rounded-md bg-white/80 focus:border-indigo-600 transition" />
       </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-      <p>&copy; 2023 Nandha Kumar. All rights reserved.</p>
-    </footer>
+      <div class="flex flex-col">
+        <label for="email" class="mb-1">Your Email</label>
+        <input type="email" id="email" name="email" required class="px-4 py-2.5 border-2 border-indigo-200 rounded-md bg-white/80 focus:border-indigo-600 transition" />
+      </div>
+      <div class="flex flex-col">
+        <label for="message" class="mb-1">Your Message</label>
+        <textarea id="message" name="message" rows="5" required class="px-4 py-2 border-2 border-indigo-200 rounded-md bg-white/80 focus:border-indigo-600 transition"></textarea>
+      </div>
+      <button type="submit" class="bg-gradient-to-r from-indigo-600 to-fuchsia-600 text-white font-semibold px-8 py-3 rounded-md shadow-md hover:scale-105 transition">Send Message</button>
+    </form>
+    <div class="flex justify-center mt-7 gap-7">
+      <a href="https://github.com/nandha-js" target="_blank" class="text-2xl text-gray-600 hover:text-indigo-700 transition"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/nandhakumar-p-2441b2329/" target="_blank" class="text-2xl text-blue-700 hover:text-indigo-700 transition"><i class="fab fa-linkedin-in"></i></a>
+      <!-- UPDATED MAILTO EMAIL -->
+      <a href="mailto:nandhakumar20021231@gmail.com" class="text-2xl text-rose-600 hover:text-indigo-700 transition"><i class="fas fa-envelope"></i></a>
+    </div>
+    <div id="toast" class="hidden fixed left-1/2 -translate-x-1/2 top-20 z-50 bg-green-600 text-white px-6 py-3 rounded shadow-lg font-semibold">Thank you! Message sent.</div>
   </div>
 
-  <!-- AOS JS -->
+  <!-- UPDATED FIXED EMAIL BUTTON -->
+  <a href="mailto:nandhakumar20021231@gmail.com" class="fixed bottom-8 right-8 bg-gradient-to-r from-indigo-600 to-violet-600 text-white shadow-2xl rounded-full p-4 text-3xl z-50 hover:scale-110 transition animate-bounce" title="Email me">
+    <i class="fas fa-envelope"></i>
+  </a>
+
+  <footer class="text-center text-gray-500 py-8 mt-6">
+    <p>&copy; <span id="year"></span> NandhaKumar. All rights reserved.</p>
+  </footer>
+</section>
+
+  </main>
+
+  <!-- AOS + JS -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-
-  <!-- JavaScript -->
   <script>
-    AOS.init({ duration: 1000, once: true });
-
-    const menuToggle = document.querySelector('.mobile-menu-toggle');
-    const navMenu = document.querySelector('.nav-menu');
-    const themeToggle = document.querySelector('.theme-toggle');
-    const body = document.body;
-
-    menuToggle.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
-      menuToggle.innerHTML = navMenu.classList.contains('active')
-        ? '<i class="fas fa-times"></i>'
-        : '<i class="fas fa-bars"></i>';
+    AOS.init({ once:true, duration:900 });
+    document.getElementById('menuBtn').addEventListener('click', () => {
+      document.getElementById('navMenuMobile').classList.toggle('hidden');
     });
-
-    themeToggle.addEventListener('click', () => {
-      const newTheme = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-      body.setAttribute('data-theme', newTheme);
-      themeToggle.innerHTML = newTheme === 'light'
-        ? '<i class="fas fa-moon"></i>'
-        : '<i class="fas fa-sun"></i>';
-    });
-
-    document.querySelectorAll('.nav-menu a').forEach(link => {
-      link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-        menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-      });
-    });
-
-    document.querySelector('.contact-form').addEventListener('submit', (e) => {
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // Toast for contact form submit
+    document.getElementById('contactForm').addEventListener('submit', function(e){
       e.preventDefault();
-      alert('Thank you for your message! I will get back to you soon.');
+      document.getElementById('toast').classList.remove('hidden');
+      setTimeout(()=>document.getElementById('toast').classList.add('hidden'), 2500);
       e.target.reset();
     });
   </script>
